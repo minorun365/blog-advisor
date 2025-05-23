@@ -1,0 +1,18 @@
+[project]
+name = "tech-blog-suggester"
+version = "0.1.0"
+description = "AI-powered tech blog idea suggester using Strands Agents and Claude 3.7 Sonnet"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "google-api-python-client>=2.170.0",
+    "nest-asyncio>=1.6.0",
+    "python-dotenv>=1.1.0",
+    "strands-agents>=0.1.3",
+    "streamlit>=1.45.1",
+    "requests>=2.32.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
