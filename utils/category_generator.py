@@ -25,9 +25,9 @@ def generate_tech_categories(num_categories: int = 8):
         region_name=os.getenv("AWS_REGION", "us-west-2")
     )
     
-    # BedrockモデルをClaude 3.7 Sonnetで初期化
+    # Bedrockモデルを初期化
     bedrock_model = BedrockModel(
-        model_id="us.anthropic.claude-3-7-sonnet-20250219-v1:0",  # Claude 3.7 Sonnet (US cross-region)
+        model_id="us.anthropic.claude-3-haiku-20240307-v1:0",
         boto_session=session,
         temperature=0.9,  # 多様性のために高めに設定
         max_tokens=1000
