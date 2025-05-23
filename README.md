@@ -9,6 +9,7 @@ AWS発のOSS「Strands Agents」フレームワークと、Amazon BedrockのClau
 
 - Qiitaの最新トレンドを分析して技術分野を動的生成
 - Google Search APIとQiita APIを使用した最新トレンドの調査
+- Tavily Search API をフォールバックとして使用（Google APIのクォータ制限対策）
 - Bedrock Claude 3.7 Sonnetによる高度な分析とブログネタの提案
 - ストリーミングレスポンスによるリアルタイムな結果表示
 
@@ -50,6 +51,7 @@ cp .env.example .env
 
 - `GOOGLE_API_KEY`: Google Cloud PlatformのAPIキー
 - `GOOGLE_CSE_ID`: Custom Search EngineのID
+- `TAVILY_API_KEY`: Tavily Search APIキー（オプション、フォールバック用）
 - `AWS_ACCESS_KEY_ID`: AWSアクセスキーID
 - `AWS_SECRET_ACCESS_KEY`: AWSシークレットアクセスキー
 - `AWS_REGION`: AWSリージョン（デフォルト: us-west-2）
@@ -63,9 +65,28 @@ cp .env.example .env
    - 「ウェブ全体を検索」をオンにする
    - 検索エンジンIDを取得
 
-### 5. AWS Bedrockの設定
+### 5. Tavily Search APIの設定（オプション）
 
-1. AWS Bedrockコンソールでモデルアクセスを有効化
+Google検索のクォータ制限対策として、Tavily検索をフォールバックとして使用できます：
+
+1. [Tavily](https://tavily.com/)でアカウントを作成
+2. ダッシュボードからAPIキーを取得
+3. `.env`ファイルに`TAVILY_API_KEY`を設定
+
+### 6. Langfuseの設定（オプション）
+
+AIエージェントの動作をトレースして観察できるLangfuseを設定できます：
+
+1. [Langfuse](https://cloud.langfuse.com/)でアカウントを作成
+2. プロジェクトを作成し、プロジェクト設定からAPIキーを取得
+3. `.env`ファイルに以下を設定：
+   - `LANGFUSE_PUBLIC_KEY`: プロジェクトのPublic Key
+   - `LANGFUSE_SECRET_KEY`: プロジェクトのSecret Key
+   - `LANGFUSE_HOST`: `https://cloud.langfuse.com` （EU）または `https://us.cloud.langfuse.com` （US）
+
+### 7. AWS Bedrockの設定
+
+1. AWSのBedrockコンソールでモデルアクセスを有効化
 2. Claude 3.7 Sonnet (`us.anthropic.claude-3-7-sonnet-20250219-v1:0`)へのアクセスを許可
 3. IAMユーザーに必要な権限を付与
 
