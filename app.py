@@ -19,11 +19,10 @@ st.set_page_config(
 )
 
 # タイトルと説明
-st.title("📝 #ブログネタ検討くん")
+st.title("# ブログネタ検討くん")
 st.markdown("""
 エンジニア向けのブログネタを提案するAIエージェントです。  
 AWS発のOSS「Strands Agents」フレームワークと、BedrockのClaude 3.7 Sonnetを使っています。
-（Claude 4にも対応できますが、個人AWSアカウントではBedrock初期クォータが低すぎて動かず。残念）
 """)
 
 # セッション状態の初期化
